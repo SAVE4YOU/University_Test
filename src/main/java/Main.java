@@ -1,8 +1,8 @@
-import Domain.Lector;
-import Services.DepartmentService;
-import Services.LectorService;
+import domains.Lector;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import services.DepartmentService;
+import services.LectorService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,9 +20,6 @@ public class Main {
         System.out.println("4 - Show count of employee for {department_name}");
         System.out.println("5 - Global search by {template}");
         System.out.println("0 - Exit");
-/*
-        Add here any lectors or departments
- */
 
         int command = 10;
         while (command != 0) {
@@ -70,7 +67,7 @@ public class Main {
                     name = sc.next();
                     List<Lector> lectors = lectorService.globalSearch(name);
                     for (Lector lector1 : lectors) {
-                        System.out.print("(Id =" + lector1.getId() + ", name = " + lector1.getName() + ", last name = " + lector1.getLastName() + ".\n");
+                        System.out.print("(Id =" + lector1.getId() + ", name = " + lector1.getName() + ", last name = " + lector1.getLastName() + ").\n");
                     }
                     if (lectorService.globalSearch(name).isEmpty())
                         System.out.println("Not found");

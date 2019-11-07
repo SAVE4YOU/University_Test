@@ -1,4 +1,4 @@
-package Domain;
+package domains;
 
 import lombok.Data;
 
@@ -17,7 +17,7 @@ public class Department {
     @JoinColumn(name = "head_id")
     private Lector head;
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "departments",fetch = FetchType.EAGER)
     private List<Lector> lectors;
 
     public Department(String name) {

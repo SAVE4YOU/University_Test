@@ -1,6 +1,6 @@
-package Dao;
+package dao;
 
-import Domain.Lector;
+import domains.Lector;
 
 import java.util.List;
 
@@ -15,4 +15,6 @@ public interface LectorsDao {
     List<Lector> findAll();
 
     List<Lector> globalSearch(String template);
+
+    void delete(Lector lector);
 }

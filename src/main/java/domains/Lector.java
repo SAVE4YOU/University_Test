@@ -1,8 +1,11 @@
-package Domain;
+package domains;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,9 +25,11 @@ public class Lector {
     private Set<Degree> degree;
     private int salary;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id")
-    private Department department;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = Department.class)
+    @CollectionTable(name = "departments", joinColumns = @JoinColumn(name = "lector_id"))
+    private List<Department> departments;
 
     public Lector(String name, String lastName, Set<Degree> degree, int salary) {
         this.name = name;

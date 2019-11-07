@@ -1,10 +1,10 @@
-package DaoImpl;
+package dao_impl;
 
-import Dao.DepartmentDao;
-import Domain.Degree;
-import Domain.Department;
-import Domain.Lector;
-import Utils.HibernateSessionFactoryUtil;
+import dao.DepartmentDao;
+import domains.Degree;
+import domains.Department;
+import domains.Lector;
+import utils.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -21,6 +21,14 @@ public class DepartmentDaoImpl implements DepartmentDao {
         session.close();
     }
 
+    public void delete(Department department) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(department);
+        tx.commit();
+        session.close();
+    }
+
     public void update(Department department) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
@@ -30,13 +38,19 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     public Department findById(Long id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Department.class, id);
+        Session session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Department department =  session.get(Department.class, id);
+        session.close();
+        return department;
     }
 
     public Department findByName(String name) {
-        Query query = HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("From Department where name =:name");
+        Session session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query query = session.createQuery("From Department where name =:name");
         query.setParameter("name", name);
-        return (Department) query.uniqueResult();
+        Department department = (Department) query.uniqueResult();
+        session.close();
+        return department;
     }
 
     public int getAvgSalaryByDepartmentName(String name) {

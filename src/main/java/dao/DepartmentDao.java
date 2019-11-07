@@ -1,6 +1,6 @@
-package Dao;
+package dao;
 
-import Domain.Department;
+import domains.Department;
 
 public interface DepartmentDao {
     void save(Department department);
@@ -16,4 +16,6 @@ public interface DepartmentDao {
     int getCountOfEmployeeByDepartmentName(String name);
 
     String showStatisticOfDepartment(String name);
+
+    void delete(Department department);
 }

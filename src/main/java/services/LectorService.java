@@ -1,7 +1,7 @@
-package Services;
+package services;
 
-import DaoImpl.LectorsDaoImpl;
-import Domain.Lector;
+import dao_impl.LectorsDaoImpl;
+import domains.Lector;
 
 import java.util.List;
 
@@ -26,5 +26,9 @@ public class LectorService {
 
     public List<Lector> globalSearch(String template) {
         return lectorsDao.globalSearch(template);
+    }
+
+    public void delete(Lector lector){
+        lectorsDao.delete(lector);
     }
 }

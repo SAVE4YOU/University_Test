@@ -1,7 +1,7 @@
-package Services;
+package services;
 
-import DaoImpl.DepartmentDaoImpl;
-import Domain.Department;
+import dao_impl.DepartmentDaoImpl;
+import domains.Department;
 
 public class DepartmentService {
     private DepartmentDaoImpl departmentDao = new DepartmentDaoImpl();
@@ -32,5 +32,9 @@ public class DepartmentService {
 
     public String showStatisticOfDepartment(String name) {
         return departmentDao.showStatisticOfDepartment(name);
+    }
+
+    public void delete (Department department){
+        departmentDao.delete(department);
     }
 }

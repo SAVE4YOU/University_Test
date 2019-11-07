@@ -1,7 +1,7 @@
-package Utils;
+package utils;
 
-import Domain.Department;
-import Domain.Lector;
+import domains.Department;
+import domains.Lector;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
