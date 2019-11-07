@@ -1,3 +1,4 @@
+import domains.Department;
 import domains.Lector;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -20,6 +21,10 @@ public class Main {
         System.out.println("4 - Show count of employee for {department_name}");
         System.out.println("5 - Global search by {template}");
         System.out.println("0 - Exit");
+
+        //just for fill db with departments
+        Department department = new Department("Math");
+        Department department1 = new Department("English");
 
         int command = 10;
         while (command != 0) {
