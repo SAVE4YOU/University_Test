@@ -57,8 +57,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
         Department department = findByName(name);
         int allSalary = department.getLectors().stream().mapToInt(Lector::getSalary).sum();
         int sum = department.getLectors().size() == 0?1:department.getLectors().size();
-        int avgSalary = allSalary/sum;
-        return avgSalary;
+        return allSalary/sum;
     }
 
     public int getCountOfEmployeeByDepartmentName(String name) {
