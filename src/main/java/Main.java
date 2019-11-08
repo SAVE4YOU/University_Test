@@ -32,11 +32,19 @@ public class Main {
                 case ("1"):
                     System.out.println("Enter a name of department:");
                     name = sc.next();
-                    message = departmentService.findByName(name) == null ? "Department does not exists" :
-                            "Head of " + departmentService.findByName(name).getName() +
-                                    " department is " + departmentService.findByName(name).getHead().getName() +
-                                    " " + departmentService.findByName(name).getHead().getLastName();
-                    System.out.println(message);
+                    if(departmentService.findByName(name)!=null) {
+                        if (departmentService.findByName(name).getHead() == null) {
+                            System.out.println("Head does not exist");
+                        } else {
+                            message = "Head of " + departmentService.findByName(name).getName() +
+                                      " department is " + departmentService.findByName(name).getHead().getName() +
+                                      " " + departmentService.findByName(name).getHead().getLastName();
+                            System.out.println(message);
+                        }
+                    }
+                    else {
+                        System.out.println("Department does not exists");
+                    }
                     break;
                 case ("2"):
                     System.out.println("Enter a name of department:");
