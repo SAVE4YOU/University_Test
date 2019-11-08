@@ -25,6 +25,8 @@ public class Main {
         //just for fill db with departments
         Department department = new Department("Math");
         Department department1 = new Department("English");
+        departmentService.save(department);
+        departmentService.save(department1);
 
         int command = 10;
         while (command != 0) {
