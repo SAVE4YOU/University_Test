@@ -22,24 +22,14 @@ public class Main {
         System.out.println("5 - Global search by {template}");
         System.out.println("0 - Exit");
 
-        //just for fill db with departments
-        Department department = new Department("Math");
-        Department department1 = new Department("English");
-        departmentService.save(department);
-        departmentService.save(department1);
-
-        int command = 10;
-        while (command != 0) {
+        String command = "";
+        while (!command.equals("0")) {
             String message, name;
             System.out.println("command:");
             Scanner sc = new Scanner(System.in);
-            try {
-                command = sc.nextInt();
-            } catch (Exception e) {
-                System.out.println("Invalid command");
-            }
+                command = sc.next();
             switch (command) {
-                case (1):
+                case ("1"):
                     System.out.println("Enter a name of department:");
                     name = sc.next();
                     message = departmentService.findByName(name) == null ? "Department does not exists" :
@@ -48,28 +38,28 @@ public class Main {
                                     " " + departmentService.findByName(name).getHead().getLastName();
                     System.out.println(message);
                     break;
-                case (2):
+                case ("2"):
                     System.out.println("Enter a name of department:");
                     name = sc.next();
                     message = departmentService.findByName(name) == null ? "Department does not exists" :
                             departmentService.showStatisticOfDepartment(name);
                     System.out.println(message);
                     break;
-                case (3):
+                case ("3"):
                     System.out.println("Enter a name of department:");
                     name = sc.next();
                     message = departmentService.findByName(name) == null ? "Department does not exists" :
                             Integer.toString(departmentService.getAvgSalaryByDepartmentName(name));
                     System.out.println(message);
                     break;
-                case (4):
+                case ("4"):
                     System.out.println("Enter a name of department:");
                     name = sc.next();
                     message = departmentService.findByName(name) == null ? "Department does not exists" :
                             Integer.toString(departmentService.getCountOfEmployeeByDepartmentName(name));
                     System.out.println(message);
                     break;
-                case (5):
+                case ("5"):
                     System.out.println("Enter a template:");
                     name = sc.next();
                     List<Lector> lectors = lectorService.globalSearch(name);
@@ -79,11 +69,11 @@ public class Main {
                     if (lectorService.globalSearch(name).isEmpty())
                         System.out.println("Not found");
                     break;
-                case (0):
+                case ("0"):
                     System.out.println("Process finished!");
                     break;
                 default:
-                    System.out.println("Invalid command");
+                    System.out.println("Try once more");
                     break;
             }
         }
